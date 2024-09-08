@@ -1,0 +1,25 @@
+.hero{
+    background-image: url(../images/hero-img.png);
+    background-repeat: no-repeat;
+    background-position: right 70px bottom 0px;
+    padding-bottom: 100px;
+    background-size: 800px;
+}
+
+.hero__inner{
+    padding-top: 80px;
+    font-family: "Open Sans";
+}
+
+.hero__tittle{
+    color: var(--dark-blue);
+    font-weight: 700;
+    font-size: 80px;
+    width: 645px;
+}
+
+.hero__description{
+    margin-block: 50px;
+    width: 380px;
+}
+

@@ -1,0 +1,80 @@
+:root{
+    --grey: rgba(75, 93, 104, 1);
+    --dark-blue: rgba(33, 35, 83, 1);
+    --purpule: rgba(156, 105, 226, 1)
+}
+
+h1, h2, h3, p{
+    margin: 0px;
+}
+
+ul{
+    list-style: none;
+    padding-inline-start: 0px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.container{
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.link{
+    color: var(--grey);
+    font-family: "Open Sans";
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.primary-btn{
+    color: var(--dark-blue);
+    font-family: "Open Sans";
+    font-weight: 700;
+    font-size: 16px;
+
+    padding: 17px 29px;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0px 5px 5px 0px rgba(75, 93, 104, 0.2);
+}
+
+.primary-btn::after{
+    content: "";
+    display: inline-block;
+    background: url(../images/arrow.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 14px;
+    margin-left: 20px;
+}
+
+.load-more-btn{
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+
+    padding: 16px 37px;
+    background-color: var(--purpule);
+    border-radius: 50px;
+    border: none;
+}
+
+.section-title{
+    color: var(--dark-blue);
+    font-family: "Helvetica";
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.section-description{
+    color: var(--grey);
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 28.8px;
+}

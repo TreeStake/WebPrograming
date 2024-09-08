@@ -1,0 +1,48 @@
+.footer-section{
+    padding-top: 100px;
+    border-top: 2px solid rgba(156, 105, 226, 0.2);
+    padding-bottom: 40px;
+}
+
+.footer__call-to-action{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 70px;
+}
+
+.footer__description{
+    margin-top: 20px;
+}
+
+.footer__button-container{
+    display: flex;
+    width: 410px;
+    justify-content: space-between;
+}
+
+.pink{
+    background-color: rgba(240, 99, 184, 1);
+}
+
+.footer__copywrite{
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer__copywrite-text{
+    color: var(--dark-blue);
+    font-family: "Open Sans";
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 21.6px;
+}
+
+.footer__copywrite-send-message{
+    width: 60px;
+    height: 60px;
+    background: url(../images/message.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+}
