@@ -28,17 +28,21 @@
 .footer__copywrite{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .footer__copywrite-text{
     color: var(--dark-blue);
-    font-family: "Open Sans";
+    font-family: "Nunito Sans";
     font-weight: 400;
     font-size: 12px;
     line-height: 21.6px;
 }
 
 .footer__copywrite-send-message{
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
     width: 60px;
     height: 60px;
     background: url(../images/message.svg);
