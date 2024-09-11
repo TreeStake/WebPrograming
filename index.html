@@ -11,7 +11,10 @@
         <div class="container">
             <header class="header">
                 <img src="./images/Logo.svg" alt="Логотип" class="header__logo">
-                <div class="wrapper">
+                <button class="burger" onclick="toogleMenu()">
+                    <img src="./images/burger.svg" alt="burger" >
+                </button>
+                <div class="wrapper" id="nav-links">
                     <nav class="header__nav">
                         <ul class="header__nav-menu">
                             <li class="header__nav-item"><a class="link">About</a></li>
@@ -112,5 +115,6 @@
             </footer>
         </div>
     </section>
+    <script src="./js/main.js"></script>
 </body>
 </html>

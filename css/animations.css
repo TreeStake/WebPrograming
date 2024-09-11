@@ -1,0 +1,25 @@
+@keyframes move-arrow {
+    0% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(180%);
+    }
+    100% {
+        transform: translateX(380%);
+        opacity: 0;
+    }
+}
+
+@keyframes change-color{
+    0%{
+        background-color: var(--purpule);
+    }
+    50%{
+        background-color: rgba(240, 99, 184, 1);
+    }
+    100%{
+        background-color: rgba(45, 156, 219, 1);
+    }
+}

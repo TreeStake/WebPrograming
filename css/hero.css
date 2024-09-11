@@ -1,25 +1,62 @@
 .hero{
     background-image: url(../images/hero-img.png);
     background-repeat: no-repeat;
-    background-position: right 70px bottom 0px;
     padding-bottom: 100px;
     background-size: 800px;
+    background-position: right 70px bottom 0px;
 }
 
 .hero__inner{
-    padding-top: 80px;
     font-family: "Nunito Sans";
+    padding-top: 80px;
 }
 
 .hero__tittle{
     color: var(--dark-blue);
     font-weight: 700;
     font-size: 80px;
-    width: 645px;
+    max-width: 645px;
 }
 
 .hero__description{
     margin-block: 50px;
-    width: 380px;
+    max-width: 380px;
 }
 
+@media screen and (max-width: 1200px){
+    .hero{
+        background-position: right 40px bottom 0px;
+        background-size: 650px;
+    }
+
+    .hero__description{
+        margin-block: 50px;
+    }
+}
+
+@media screen and (max-width: 992px){
+    .hero{
+        background-position: right 10px bottom 20px;
+        background-size: 500px;
+    }
+
+    .hero__description{
+        margin-block: 40px;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .hero{
+        background-image: none;
+    }
+
+    .hero__tittle{
+        font-size: 65px;
+    }
+}
+
+@media screen and (max-width: 576px){
+    .hero__tittle{
+        font-size: 45px;
+    }
+}

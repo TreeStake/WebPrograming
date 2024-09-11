@@ -15,6 +15,46 @@
     margin-right: 90px;
 }
 
+.presentation img{
+    width: 477px;
+    height: 504px;
+}
+
 .presentation__inner-description{
     margin-top: 40px;
+} 
+
+@media screen and (max-width: 992px){
+    .presentation{
+        margin-top: 70px;
+    }
+
+    .presentation__inner{
+        margin-block: 60px;
+        margin-right: 40px;
+    }
+
+    .presentation img{
+        width: 342px;
+        height: 361px;
+        align-self: center;
+    }
+
+    .presentation__inner-description{
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .presentation img{
+        display: none;
+    }
+
+    .presentation__inner{
+        margin-right: 0px;
+        margin-left: 0px;
+        max-width: 100%;
+        padding-inline: 20px;
+        margin-block: 40px;
+    }
 }

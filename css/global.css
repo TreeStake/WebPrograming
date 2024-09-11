@@ -11,7 +11,7 @@ h1, h2, h3, p{
 ul{
     list-style: none;
     padding-inline-start: 0px;
-    margin-bottom: 0px;
+    margin-block: 0px;
 }
 
 a{
@@ -20,15 +20,8 @@ a{
 
 .container{
     margin: 0 auto;
-    max-width: 1150px;
-}
-
-.link{
-    color: var(--grey);
-    font-family: "Nunito Sans";
-    font-weight: 500;
-    font-size: 16px;
-    cursor: pointer;
+    padding: 0 15px;
+    max-width: 1180px;
 }
 
 .primary-btn{
@@ -37,11 +30,14 @@ a{
     font-weight: 700;
     font-size: 16px;
 
+    display: inline-block;
     padding: 17px 29px;
+    padding-right: 50px;
     background-color: white;
     border-radius: 50px;
     box-shadow: 0px 5px 5px 0px rgba(75, 93, 104, 0.2);
     cursor: pointer;
+    overflow: hidden;
 }
 
 .primary-btn::after{
@@ -52,7 +48,8 @@ a{
     background-repeat: no-repeat;
     width: 20px;
     height: 14px;
-    margin-left: 20px;
+    /* transform: translateX(20px); */
+    animation: move-arrow 2s linear infinite;
 }
 
 .load-more-btn{
@@ -65,6 +62,11 @@ a{
     background-color: var(--purpule);
     border-radius: 50px;
     cursor: pointer;
+    animation: change-color 3s linear infinite alternate;
+}
+
+.load-more-btn:hover{
+    animation-play-state: paused;
 }
 
 .section-title{
@@ -80,4 +82,15 @@ a{
     font-size: 18px;
     font-weight: 500;
     line-height: 28.8px;
+}
+
+@media screen and (max-width: 576px){
+    .section-title{
+        font-size: 34px;
+    }
+
+    .section-description{
+        font-size: 16px;
+        line-height: 22.8px;
+    }
 }
