@@ -1,0 +1,118 @@
+.features{
+    margin-top: 150px;
+    margin-bottom: 70px;
+}
+
+.features__box{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.features__box-description{
+    align-self: center;
+    width: 584px;
+    margin-top: 50px;
+}
+
+.features__menu{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 80px;
+    justify-content: space-between;
+}
+
+.features__card{
+    padding-top: 50px;
+    padding-bottom: 30px;
+    width: 48%;
+    display: flex;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right 0px ;
+    margin-right: 40px;
+    margin-bottom: 50px;
+}
+
+.features__card:nth-child(2n){
+    margin-right: 0px;
+}
+
+.search-data{
+    height: 211px;
+    margin-right: 45px;
+    align-self: center;
+}
+
+.print-out{
+    width: 245px;
+    height: 181px;
+    margin-right: 30px;
+    align-self: center;
+}
+
+.hours{
+    width: 241px;
+    height: 185px;
+    margin-right: 30px;
+    align-self: center;
+}
+
+.security{
+    height: 201px;
+    margin-right: 42px;
+    align-self: center;
+}
+
+.features__card-title{
+    color: var(--dark-blue);
+    font-family: "Helvetica";
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.features__card-description{
+    color: var(--grey);
+    font-family: "Nunito Sans";
+    font-weight: 400;
+    font-size: 16px;
+    margin-top: 20px;
+    width: 223px;
+    line-height: 25.6px;
+}
+
+.feature__card-wrapper{
+    height: 290px;
+}
+
+.feature__card-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.stick-to-bottom{
+    margin-top: auto;
+}
+
+.search-data-bg{
+    background-image: url(../images/search-bg.png);
+}
+
+.hours-bg{
+    background-image: url(../images/hours-bg.png);
+}
+
+.print-bg{
+    background-image: url(../images/print-bg.png);
+}
+
+.security-bg{
+    background-image: url(../images/security-bg.png);
+}
+
+.features__card .primary-btn{
+    align-self: flex-start;
+    padding: 0px;
+    background-color: transparent;
+    box-shadow: none;
+}
