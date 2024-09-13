@@ -23,10 +23,20 @@
     max-width: 380px;
 }
 
+@media screen and (min-width: 1920px){
+    .hero{
+        background-position: left 70% bottom 0px;
+    }
+}
+
 @media screen and (max-width: 1200px){
     .hero{
         background-position: right 40px bottom 0px;
         background-size: 650px;
+    }
+
+    .hero__inner{
+        padding-top: 40px;
     }
 
     .hero__description{
@@ -38,6 +48,11 @@
     .hero{
         background-position: right 10px bottom 20px;
         background-size: 500px;
+        padding-bottom: 60px;
+    }
+
+    .hero__inner{
+        padding-top: 80px;
     }
 
     .hero__description{
@@ -58,5 +73,13 @@
 @media screen and (max-width: 576px){
     .hero__tittle{
         font-size: 45px;
+    }
+
+    .hero__tittle{
+        max-width: 410px;
+    }
+
+    .hero__description{
+        max-width: 310px;
     }
 }

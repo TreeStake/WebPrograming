@@ -51,16 +51,27 @@
     display: none;
     background-color: transparent;
     border: none;
+    height: 45px;
+}
+
+@media screen and (max-width: 1200px){
+    .header{
+        padding-block: 30px;
+    }
 }
 
 @media screen and (max-width: 768px){
     .header{
-        padding-block: 20px;
         justify-content: space-between;
+        padding-block: 20px;
     }
 
     .burger{
         display: block;
+    }
+
+    .close{
+        display: none;
     }
 
     .wrapper{
@@ -82,6 +93,14 @@
         clip-path: circle(1000px at top left);
     }
 
+    .burger.is-open .burger-icon{
+        display: none;
+    }
+
+    .burger.is-open .close{
+        display: block;
+    }
+
     .header__nav-menu{
         margin-left: 0px;
         flex-direction: column;
@@ -92,7 +111,6 @@
         margin-bottom: 30px;
     }
 
-    
     .link{
         font-weight: 600;
         font-size: 20px;

@@ -48,7 +48,6 @@ a{
     background-repeat: no-repeat;
     width: 20px;
     height: 14px;
-    /* transform: translateX(20px); */
     animation: move-arrow 2s linear infinite;
 }
 
