@@ -1,0 +1,58 @@
+@import url(./normalize.css);
+
+h2{
+    margin: 0;
+}
+
+ul{
+    list-style: none;
+}
+
+.container{
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.search-box{
+    padding-block: 25px;
+}
+
+.items-box{
+    display: flex;
+}
+
+.utils{
+    width: 16%;
+}
+
+.films-wrapper{
+    width: 84%;
+}
+
+.util-title{
+    margin-bottom: 20px;
+}
+
+.count-box{
+    display: flex;
+    justify-content: space-between;
+}
+
+img{
+    width: 100px;
+}
+
+.films-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.film{
+    width: 33.333%;
+}
+
+.film:nth-child(n+3){
+    margin-top: 20px;
+}
+
+

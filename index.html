@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Film rating</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="search-box">
+            <label for="" class="search-title">Enter film</label>
+            <input type="text" class="search-input" id="search-input">
+            <button type="button" class="search-btn" id="search-btn">Search</button>
+            <button type="button" class="cancel-search-btn" id="cancel-search-btn">Cancel</button>
+        </div>
+        <div class="items-box">
+            <div class="utils">
+                <h2 class="util-title">Manage films</h2>
+                <button type="button" class="sort-btn" id="sort-btn">Sort by most popular</button>
+                <p class="counter-title">Count time of all films</p>
+                <button type="button" class="count-btn" id="count-btn">COUNT</button>
+                <div class="count-box">
+                    <p class="count-result">Total time:</p>
+                    <p class="result">0</p>
+                </div>
+            </div>
+            <div class="films-wrapper">
+                <ul id="films-list" class="films-list">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+
+    <script type="module" src="./js/index.js"></script>
+</body>
+</html>
