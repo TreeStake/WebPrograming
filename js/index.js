@@ -48,16 +48,24 @@ const addItemToPage = ({ id, title, duration, imdbReviews }) => {
 
 renderItemsList(movies)
 
-findButton.addEventListener("click", () => {
-  const foundFilms = currentFilms.filter(
-    (film) => film.title.toLowerCase().search(findInput.value.toLowerCase()) !== -1
-  );
+let beforeFind = []
 
-  renderItemsList(foundFilms);
+findButton.addEventListener("click", () => {
+  if(findInput.value){
+    const foundFilms = currentFilms.filter(
+      (film) => film.title.toLowerCase().search(findInput.value.toLowerCase().trim()) !== -1
+    );
+    beforeFind = [...currentFilms]
+    renderItemsList(foundFilms);
+  } 
+  else{
+    renderItemsList(beforeFind);
+  };
+  
 });
 
 cancelFindButton.addEventListener("click", () => {
-  renderItemsList(movies);
+  renderItemsList(movies)
 
   findInput.value = "";
 });
@@ -126,6 +134,7 @@ formEdit.addEventListener("submit", (event) => {
 
 const newCard = ({id, name, duration, reviews}) => {
   currentFilms.push({id, title: name, duration, imdbReviews: reviews})
+  movies.push({id, title: name, duration, imdbReviews: reviews})
   renderItemsList(currentFilms)
 };
 
