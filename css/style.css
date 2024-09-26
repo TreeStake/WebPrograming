@@ -48,11 +48,84 @@ img{
 }
 
 .film{
-    width: 33.333%;
+    position: relative;
+    width: 280px;
+    border: 1px solid black;
+    padding-inline: 15px;
+    padding-top: 15px;
+    border-radius: 20px;
+    margin-bottom: 20px;
 }
 
-.film:nth-child(n+3){
-    margin-top: 20px;
+.film:not(:nth-child(3n)){
+    margin-right: 20px;
 }
 
+.edit{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    background: url(../images/edit.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
 
+.edit img{
+    width: 30px;
+}
+
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    background-color: rgba(184, 182, 182, 0.659);
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal.show-modal{
+    pointer-events: all;
+    opacity: 100;
+    visibility: visible;
+}
+
+.edit-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 60px;
+}
+
+.edit-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 500px;
+}
+
+.edit-form input{
+    height: 30px;
+    margin-bottom: 15px;
+}
+
+.edit-form button{
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.form-title{
+    margin-bottom: 20px;
+}
