@@ -1,4 +1,4 @@
-import { movies } from "./movies.js";
+import {getAllMovies, postMovie, editMovie, deleteMovie, searchFilms} from "./api.js"
 
 const sortButton = document.getElementById("sort-btn");
 const countButton = document.getElementById("count-btn");
@@ -25,9 +25,17 @@ const itemTemplate = ({ id, title, duration, imdbReviews }) => `
     <p class="film-reviews">Reviews: ${imdbReviews}</p>
   </div>
   <button type="button" class="edit""></button>
+  <button type="button" class="delete""></button>
 </li>`;
 
 let currentFilms = []
+
+const refetchMovies = async () => {
+  const allMovies = await getAllMovies();
+  currentFilms = allMovies;
+
+  renderItemsList(currentFilms)
+}
 
 const renderItemsList = (items) => {
     filmsContainer.innerHTML = "";
@@ -46,60 +54,55 @@ const addItemToPage = ({ id, title, duration, imdbReviews }) => {
     );
 };
 
-renderItemsList(movies)
-
-let beforeFind = []
-
-findButton.addEventListener("click", () => {
+findButton.addEventListener("click", async () => {
   if(findInput.value){
-    const foundFilms = currentFilms.filter(
-      (film) => film.title.toLowerCase().search(findInput.value.toLowerCase().trim()) !== -1
-    );
-    beforeFind = [...currentFilms]
+    const foundFilms = await searchFilms(findInput.value)
+    console.log(foundFilms)
     renderItemsList(foundFilms);
   } 
   else{
-    renderItemsList(beforeFind);
+    refetchMovies();
   };
-  
 });
 
 cancelFindButton.addEventListener("click", () => {
-  renderItemsList(movies)
+  refetchMovies()
 
   findInput.value = "";
 });
 
 let isSorted = false;
-let beforeSortArray = [...currentFilms]
 
-sortButton.addEventListener("click", () => {
+sortButton.addEventListener("click", async () => {
   if(isSorted){
     isSorted = false
-    renderItemsList(beforeSortArray)
+    const foundFilms = await searchFilms(findInput.value)
+    renderItemsList(foundFilms);
   }
   else{
-    const sortedFilms = [...currentFilms].sort((a, b) => a.imdbReviews - b.imdbReviews)
+    const sortedFilms = await searchFilms(findInput.value, 'reviwes')
     isSorted = true
-    beforeSortArray = [...currentFilms]
     renderItemsList(sortedFilms)
   }
 });
 
 countButton.addEventListener("click", () => {
   const total = currentFilms.reduce((acc, {duration}) => acc += duration, 0)
-  console.log(total)
   resultParagraph.textContent = total
 });
 
 let parentId = 0;
 
 filmsContainer.addEventListener("click", (event) => {
-  if(!event.target.classList.contains("edit")){
-    return
+  if(event.target.classList.contains("edit")){
+    parentId = event.target.closest("li").id
+    modalEdit.classList.add("show-modal")
+  }else if(event.target.classList.contains("delete")){
+    parentId = event.target.closest("li").id
+    const updatedFilms = currentFilms.filter(movie => movie.id !== Number(parentId));
+    renderItemsList(updatedFilms)
+    deleteMovie(parentId)
   }
-  parentId = event.target.closest("li").id
-  modalEdit.classList.add("show-modal")
 })
 
 modalEdit.addEventListener("click", (event) => {
@@ -114,14 +117,14 @@ formEdit.addEventListener("submit", (event) => {
 
   const newName = formEdit.querySelector(".film-name-input").value;
   const newDuration = Number(formEdit.querySelector(".duration-input").value);
-  const newReviews = formEdit.querySelector(".review-input").value;
+  const newReviews = Number(formEdit.querySelector(".review-input").value);
 
   for (const film of currentFilms){
-    console.log(film)
     if (film.id == parentId){
       film.title = newName;
       film.duration = newDuration;
       film.imdbReviews = newReviews;
+      editMovie(film.id, {id: film.id, title: newName, duration: newDuration, reviews: newReviews})
       break
     }
   }
@@ -134,7 +137,7 @@ formEdit.addEventListener("submit", (event) => {
 
 const newCard = ({id, name, duration, reviews}) => {
   currentFilms.push({id, title: name, duration, imdbReviews: reviews})
-  movies.push({id, title: name, duration, imdbReviews: reviews})
+  postMovie({id, title: name, duration, imdbReviews: reviews})
   renderItemsList(currentFilms)
 };
 
@@ -151,16 +154,33 @@ modalAdd.addEventListener("click", (event) => {
 
 let nextId = 11
 
-formAdd.addEventListener("submit", (event) => {
+formAdd.addEventListener("submit", async (event) => {
   event.preventDefault()
 
   const newName = formAdd.querySelector(".film-name-input").value;
   const newDuration = Number(formAdd.querySelector(".duration-input").value);
-  const newReviews = formAdd.querySelector(".review-input").value;
+  const newReviews = Number(formAdd.querySelector(".review-input").value);
 
-  newCard({id: nextId, name: newName, duration: newDuration, reviews: newReviews})
-  nextId += 1
+  const notInMovies = async () => {
+    const allFilms = await getAllMovies()
+    for (let element of allFilms){
+      const isDuplicate = element.title.toLowerCase().trim() === newName.toLowerCase().trim()
+      if (isDuplicate){
+        return true
+      }
+    }
+    return false
+  }
 
-  modalAdd.classList.remove("show-modal")
-  formAdd.reset()
+  if (!await notInMovies()){
+    newCard({id: nextId, name: newName, duration: newDuration, reviews: newReviews})
+    nextId += 1
+
+    modalAdd.classList.remove("show-modal")
+    formAdd.reset()
+  }else{
+    window.alert("You can`t add dublicate")
+  }
 })
+
+refetchMovies()
