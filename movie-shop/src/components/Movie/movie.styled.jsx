@@ -3,7 +3,10 @@ import styled from '@emotion/styled'
 export const Card = styled.li`
     width: 250px;
     min-height: 490px;
-    flex-basis: 25%;
+    margin-right: 80px;
+    &:nth-child(4n){
+        margin-right: 0px;
+    }
     &:nth-child(n+5){
         margin-top: 50px;
     }

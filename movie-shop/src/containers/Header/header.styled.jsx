@@ -6,7 +6,7 @@ export const Logo = styled.img`
     align-self: center;`
 
 export const Name = styled.p`
-    color: white;
+    color: ${props => (props.color())};
     font-size: 24px;
     font-weight: 600;
     margin-left: 25px;

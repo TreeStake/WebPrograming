@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { NavLink } from 'react-router-dom'
 
 export const NavList = styled.ul`
     display: flex;
@@ -19,9 +20,9 @@ export const NavItem = styled.li`
     };
 `
 
-export const Link = styled.a`
+export const Link = styled(NavLink)`
     font-size: 16px;
     font-weight: 500;
-    color: white;
+    color: ${props => (props.color())};
 `
 

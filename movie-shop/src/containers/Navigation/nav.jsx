@@ -1,11 +1,14 @@
 import { NavItem, NavList, Link } from "./nav.styled";
 
-const Navigation = () => {
+const Navigation = ({ isBlack }) => {
+    const color = () => {
+        return isBlack ? 'black' : 'white';
+    }
     return(
         <NavList>
-            <NavItem><Link>Home</Link></NavItem>
-            <NavItem><Link>Catalog</Link></NavItem>
-            <NavItem><Link>Card</Link></NavItem>
+            <NavItem><Link to='/' color={color}>Home</Link></NavItem>
+            <NavItem><Link to='/catalog' color={color}>Catalog</Link></NavItem>
+            <NavItem><Link color={color}>Card</Link></NavItem>
         </NavList>
     )
 }

@@ -3,12 +3,15 @@ import { Container } from "../App/app.styled";
 import { Logo, Name } from "./header.styled";
 import Navigation from "../Navigation/nav";
 
-const Header = () => {
+const Header = ({ isBlack }) => {
+    const color = () => {
+        return isBlack ? 'black' : 'white';
+    }
     return(
         <Container>
             <Logo src='/tv.png'/>
-            <Name>MovieBox</Name>
-            <Navigation/>
+            <Name color={color}>MovieBox</Name>
+            <Navigation isBlack={isBlack}/>
         </Container>
     )
 }

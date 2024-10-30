@@ -1,22 +1,24 @@
 import React from "react";
-import Header from "../Header/header";
-import Hero from "../Hero/hero";
-import { HeroBg } from "./app.styled";
-import Footer from "../Footer/footer";
-import FeaturedMovie from "../FeaturedMovie/featured";
-import { movies } from "../../movies";
+import { Route, Routes } from "react-router-dom";
+import Layout from "../../layout/layout";
+import HomePage from "../../pages/home";
+import Catalog from "../../pages/catalog";
+import { MoviesProvider } from "../../moviesContex";
 
 const App = () => {
     return(
-        <div>
-            <HeroBg>
-                <Header/>
-                <Hero/>
-            </HeroBg>
-            <FeaturedMovie movies={movies}/>
-            <Footer/>
-        </div>
-        
+        <Routes>
+            <Route path="/" element={<Layout/>}>
+                <Route index element={
+                    <MoviesProvider>
+                        <HomePage />
+                    </MoviesProvider>}/>
+                <Route path="catalog" element={
+                    <MoviesProvider>
+                        <Catalog/>
+                    </MoviesProvider>}/>
+            </Route>
+        </Routes>
     )
 }
 
