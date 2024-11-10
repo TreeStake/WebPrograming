@@ -4,6 +4,7 @@ import Layout from "../../layout/layout";
 import HomePage from "../../pages/home";
 import Catalog from "../../pages/catalog";
 import { MoviesProvider } from "../../moviesContex";
+import MovieDetails from "../../components/MovieDeteils/movieDeteils";
 
 const App = () => {
     return(
@@ -17,6 +18,10 @@ const App = () => {
                     <MoviesProvider>
                         <Catalog/>
                     </MoviesProvider>}/>
+                <Route path="/movies/:movieId" element={
+                    <MoviesProvider>
+                        <MovieDetails/>
+                    </MoviesProvider>} />
             </Route>
         </Routes>
     )

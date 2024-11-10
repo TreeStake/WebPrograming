@@ -1,11 +1,14 @@
 import React from "react";
 import { Option, Select } from "../Search/search.styled";
 
-const SelectOption = ({options}) => {
+const SelectOption = ({options, onSortChange}) => {
+    const handleChange = (event) => {
+        onSortChange(event.target.value); // Передаємо вибраний параметр сортування
+    };
     return(
-        <Select>
+        <Select onChange={handleChange}>
             {options.map(option => (
-                <Option>{option.value}</Option>
+                <Option key={option.value} value={option.value}>{option.label}</Option>
             ))}
             {/* <Option></Option>
                     <Option>Ціною</Option>

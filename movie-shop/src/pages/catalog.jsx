@@ -1,14 +1,16 @@
-import React from "react";
-import FeaturedMovie from "../containers/FeaturedMovie/featured";
+import React, { useState } from "react";
 import Search from "../containers/Search/search";
 import { useMovies } from '../moviesContex';
+import CatalogMovie from "../containers/CatalogMovie/catalogMovie";
 
 const Catalog = () => {
     const movies = useMovies();
+    const [searchQuery, setSearchQuery] = useState('');
+    const [sortOption, setSortOption] = useState('');
     return(
         <>
-        <Search/>
-        <FeaturedMovie movies={movies}/>
+        <Search onSearchChange={setSearchQuery} onSortChange={setSortOption}/>
+        <CatalogMovie movies={movies} searchQuery={searchQuery} sortOption={sortOption}/>
         </>
     )
 }
