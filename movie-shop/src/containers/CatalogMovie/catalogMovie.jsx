@@ -2,29 +2,16 @@ import React from "react";
 import { FeaturedContainer, MovieList} from "../FeaturedMovie/featured.styled";
 import { Container } from "../App/app.styled";
 import Movie from "../../components/Movie/movie";
+import { useMovies } from "../../moviesContex";
 
-const CatalogMovie = ({movies, searchQuery, sortOption}) => {
-    const filteredMovies = searchQuery
-        ? movies.filter(movie => 
-            movie.title.toLowerCase().includes(searchQuery.toLowerCase().trim())
-          )
-        : movies;
+const CatalogMovie = () => {
+    const { movies } = useMovies();
 
-    const sortedMovies = [...filteredMovies].sort((a, b) => {
-        if (sortOption === 'price') {
-            return a.price - b.price;
-        } else if (sortOption === 'views') {
-            return b.imdbReviews - a.imdbReviews;
-        } else if (sortOption === 'duration') {
-            return a.duration - b.duration;
-        }
-        return 0;
-    });
     return(
         <Container>
             <FeaturedContainer>
                 <MovieList>
-                    {sortedMovies.map(movie => (
+                    {movies.map(movie => (
                         <Movie 
                             key={movie.id}
                             id={movie.id}

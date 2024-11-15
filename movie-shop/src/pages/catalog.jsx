@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import Search from "../containers/Search/search";
 import { useMovies } from '../moviesContex';
 import CatalogMovie from "../containers/CatalogMovie/catalogMovie";
+import LoaderComponent from "../components/Spiner/spiner";
 
 const Catalog = () => {
-    const movies = useMovies();
-    const [searchQuery, setSearchQuery] = useState('');
-    const [sortOption, setSortOption] = useState('');
+    const {loading, handleSearchAndSortMovies} = useMovies();
+
     return(
         <>
-        <Search onSearchChange={setSearchQuery} onSortChange={setSortOption}/>
-        <CatalogMovie movies={movies} searchQuery={searchQuery} sortOption={sortOption}/>
+        <Search onSearchAndSort={handleSearchAndSortMovies}/>
+        {loading ? <LoaderComponent/> : <CatalogMovie/>}
         </>
     )
 }

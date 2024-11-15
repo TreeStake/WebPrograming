@@ -4,10 +4,10 @@ export const Card = styled.li`
     width: 250px;
     min-height: 490px;
     margin-right: 80px;
-    &:nth-child(4n){
+    &:nth-of-type(4n){
         margin-right: 0px;
     }
-    &:nth-child(n+5){
+    &:nth-of-type(n+5){
         margin-top: 50px;
     }
 `

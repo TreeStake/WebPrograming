@@ -1,25 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useMovies } from '../../moviesContex';
 import { DeteilDiv, FilmInfo, FilmTitle, InfoText } from './movieDeteils.styled';
 
 const MovieDetails = () => {
-    const { movieId } = useParams();
-    const movies = useMovies();
-    const movie = movies.find(m => m.id === parseInt(movieId));
+    const { id } = useParams();
+    const { selectedMovie, fetchMovieById } = useMovies();
 
-    if (!movie) {
+    useEffect(() => {
+        fetchMovieById(id);
+    }, [id, fetchMovieById]);
+
+    if (!selectedMovie) {
         return <div>Movie not found</div>;
     }
 
     return (
         <DeteilDiv>
-            <img src={`/${movie.img}`} alt={movie.title} width='400px' />
+            <img src={`/${selectedMovie.img}`} alt={selectedMovie.title} width='400px' />
             <FilmInfo>
-                <FilmTitle>{movie.title}</FilmTitle>
-                <InfoText>Duration: {movie.duration}</InfoText>
-                <InfoText>IMDB Reviews: {movie.imdbReviews}</InfoText>
-                <InfoText>Price: {movie.price}</InfoText>
+                <FilmTitle>{selectedMovie.title}</FilmTitle>
+                <InfoText>Duration: {selectedMovie.duration}</InfoText>
+                <InfoText>IMDB Reviews: {selectedMovie.imdbReviews}</InfoText>
+                <InfoText>Price: {selectedMovie.price}</InfoText>
             </FilmInfo>
         </DeteilDiv>
     );

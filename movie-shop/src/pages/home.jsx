@@ -1,12 +1,15 @@
 import React from "react";
 import FeaturedMovie from "../containers/FeaturedMovie/featured";
 import { useMovies } from '../moviesContex';
+import LoaderComponent from "../components/Spiner/spiner";
 
 const HomePage = () => {
-  const movies = useMovies();
+  const {movies, loading} = useMovies();
 
   return (
-    <FeaturedMovie movies={movies} />
+    <>
+    {loading ? <LoaderComponent/> : <FeaturedMovie movies={movies} />}
+    </>
   );
 };
 

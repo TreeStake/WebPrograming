@@ -26,7 +26,7 @@ export const SearchButton = styled.button`
     background-color: #B91C1C;
     border-radius: 7px;
     border: none;
-    margin-left: 20px;
+    margin-left: 10px;
 `
 
 export const CanselButton = styled(SearchButton)`
@@ -34,6 +34,7 @@ export const CanselButton = styled(SearchButton)`
 `
 
 export const Select = styled.select`
+    width: auto;
     background-color: white;
     color: black;
     padding: 8px 20px;
@@ -42,7 +43,7 @@ export const Select = styled.select`
     border: 3px solid gray;
     border-radius: 5px;
     cursor: pointer;
-    margin-left: 20px;
+    margin-left: 10px;
 `
 
 export const Option = styled.option`
@@ -55,5 +56,5 @@ export const SortBy = styled.p`
     color: black;
     font-size: 18px;
     font-weight: 600;
-    margin-left: 40px;
+    margin-left: 20px;
 `
