@@ -29,6 +29,7 @@ export const MoviesProvider = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
+      console.log(id)
       const data = await getById(id);
       setSelectedMovie(data);
     } catch (err) {

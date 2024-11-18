@@ -27,6 +27,7 @@ export const SearchButton = styled.button`
     border-radius: 7px;
     border: none;
     margin-left: 10px;
+    cursor: pointer;
 `
 
 export const CanselButton = styled(SearchButton)`

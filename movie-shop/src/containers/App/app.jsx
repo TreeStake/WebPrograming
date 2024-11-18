@@ -5,6 +5,7 @@ import HomePage from "../../pages/home";
 import Catalog from "../../pages/catalog";
 import { MoviesProvider } from "../../moviesContex";
 import MovieDetails from "../../components/MovieDeteils/movieDeteils";
+import Cart from "../../pages/cart";
 
 const App = () => {
     return(
@@ -17,6 +18,10 @@ const App = () => {
                 <Route path="catalog" element={
                     <MoviesProvider>
                         <Catalog/>
+                    </MoviesProvider>}/>
+                <Route path="cart" element={
+                    <MoviesProvider>
+                        <Cart/>
                     </MoviesProvider>}/>
                 <Route path="/movies/:movieId" element={
                     <MoviesProvider>

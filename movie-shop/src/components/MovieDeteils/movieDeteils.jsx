@@ -1,19 +1,41 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useMovies } from '../../moviesContex';
-import { DeteilDiv, FilmInfo, FilmTitle, InfoText } from './movieDeteils.styled';
+import { DeteilDiv, FilmInfo, FilmTitle, InfoText, SelectTime, TicketAmount } from './movieDeteils.styled';
+import { Option, SearchButton } from '../../containers/Search/search.styled';
+import { useDispatch } from 'react-redux';
+import { addOrder } from '../../redux/orderSlice';
 
 const MovieDetails = () => {
-    const { id } = useParams();
+    const { movieId } = useParams();
     const { selectedMovie, fetchMovieById } = useMovies();
+    const dispatch = useDispatch();
+
+    const [time, setTime] = useState('Ранок');
+    const [amount, setAmount] = useState(1);
 
     useEffect(() => {
-        fetchMovieById(id);
-    }, [id, fetchMovieById]);
+        fetchMovieById(movieId);
+    }, [movieId]);
 
     if (!selectedMovie) {
         return <div>Movie not found</div>;
     }
+
+    const handleAddToCart = () => {
+        if (amount > 5){
+            alert("You can`t add this order")
+            return
+        }
+        dispatch(addOrder({
+            movieId: selectedMovie.id,
+            title: selectedMovie.title,
+            price: selectedMovie.price,
+            amount: Number(amount),
+            time,
+            maxAmount: 5,
+        }))
+    };
 
     return (
         <DeteilDiv>
@@ -23,6 +45,13 @@ const MovieDetails = () => {
                 <InfoText>Duration: {selectedMovie.duration}</InfoText>
                 <InfoText>IMDB Reviews: {selectedMovie.imdbReviews}</InfoText>
                 <InfoText>Price: {selectedMovie.price}</InfoText>
+                <SelectTime value={time} onChange={(e) => setTime(e.target.value)}>
+                    <Option>Ранок</Option>
+                    <Option>Обід</Option>
+                    <Option>Вечір</Option>
+                </SelectTime>
+                <TicketAmount type='number' min={1} value={amount} onChange={(e) => setAmount(e.target.value)}></TicketAmount>
+                <SearchButton type='button' onClick={handleAddToCart}>Add to cart</SearchButton>
             </FilmInfo>
         </DeteilDiv>
     );

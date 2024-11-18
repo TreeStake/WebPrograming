@@ -8,7 +8,7 @@ const Navigation = ({ isBlack }) => {
         <NavList>
             <NavItem><Link to='/' color={color}>Home</Link></NavItem>
             <NavItem><Link to='/catalog' color={color}>Catalog</Link></NavItem>
-            <NavItem><Link color={color}>Card</Link></NavItem>
+            <NavItem><Link to='/cart'color={color}>Cart</Link></NavItem>
         </NavList>
     )
 }

@@ -18,5 +18,31 @@ export const FilmTitle = styled.h2`
 export const InfoText = styled.p`
     font-size: 30px;
     font-weight: 500;
-    margin-bottom: 20px
+    margin-bottom: 20px;
+`
+
+export const SelectTime = styled.select`
+    width: auto;
+    background-color: white;
+    color: black;
+    padding: 8px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 3px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+`
+
+export const TicketAmount = styled.input`
+    width: 100px;
+    background-color: white;
+    color: black;
+    padding: 8px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 3px solid gray;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
 `
