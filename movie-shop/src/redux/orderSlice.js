@@ -56,8 +56,12 @@ const orderSlice = createSlice({
       saveToLocalStorage(updatedState);
       return updatedState
     },
+    clearOrders: () => {
+      saveToLocalStorage([]);
+      return [];
+    },
   },
 });
 
-export const { addOrder, incrementOrder, decrementOrder, removeOrder } = orderSlice.actions;
+export const { addOrder, incrementOrder, decrementOrder, removeOrder, clearOrders } = orderSlice.actions;
 export default orderSlice.reducer;

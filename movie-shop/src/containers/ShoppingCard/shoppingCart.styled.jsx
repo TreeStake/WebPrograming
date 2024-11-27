@@ -6,3 +6,9 @@ export const ShoppingBox = styled.div`
     align-items: center;
     margin-top: 40px;
 `
+
+export const ButtonsBox = styled.div`
+    display: flex;
+    width: 1100px;
+    justify-content: space-between;
+`

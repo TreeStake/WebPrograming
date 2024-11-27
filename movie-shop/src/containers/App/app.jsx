@@ -6,6 +6,8 @@ import Catalog from "../../pages/catalog";
 import { MoviesProvider } from "../../moviesContex";
 import MovieDetails from "../../components/MovieDeteils/movieDeteils";
 import Cart from "../../pages/cart";
+import Submit from "../../pages/submit";
+import Success from "../../pages/success";
 
 const App = () => {
     return(
@@ -27,7 +29,16 @@ const App = () => {
                     <MoviesProvider>
                         <MovieDetails/>
                     </MoviesProvider>} />
-            </Route>
+                <Route path="submit" element={
+                    <MoviesProvider>
+                        <Submit/>
+                    </MoviesProvider>} />
+                <Route path="success" element={
+                    <MoviesProvider>
+                        <Success/>
+                    </MoviesProvider>} />
+                </Route>
+                
         </Routes>
     )
 }
