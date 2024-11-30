@@ -90,7 +90,7 @@ const seedMovies = async () => {
 
 const start = async() => {
     try {
-        await mongoose.connect(`mongodb+srv://stas:qwer1234@cluster-lab10.jbbxy.mongodb.net/?retryWrites=true&w=majority&appName=cluster-lab10`);
+        await mongoose.connect();
         console.log("Підключено до бази даних");
         await seedMovies(); // Додавання фільмів
         app.listen(PORT, () => console.log(`Сервер запущено на http://localhost:${PORT}`));
