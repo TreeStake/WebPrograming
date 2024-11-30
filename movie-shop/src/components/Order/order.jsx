@@ -1,7 +1,7 @@
 import React from "react";
 import { Counter, CounterWrapper, MinusButton, OrderBox, OrderedFilm, PlusButton, Session, TotalPrice } from "./order.styled";
 import { useDispatch } from "react-redux";
-import { incrementOrder, decrementOrder, removeOrder } from "../../redux/orderSlice";
+import { incrementOrder, decrementOrder } from "../../redux/orderSlice";
 import { useNavigate } from "react-router-dom";
 
 const Order = ({ id, movieId, title, time, amount, price, maxAmount }) => {
@@ -10,15 +10,15 @@ const Order = ({ id, movieId, title, time, amount, price, maxAmount }) => {
     const dispatch = useDispatch();
 
     const handleIncrement = () => {
-        dispatch(incrementOrder(id));
+        if (amount < maxAmount) {
+            dispatch(incrementOrder(id));
+          } else {
+            alert("Максимальна кількість досягнута");
+          }
     };
 
     const handleDecrement = () => {
-        if (amount > 1) {
-            dispatch(decrementOrder(id));
-        } else {
-            dispatch(removeOrder(id));
-        }
+        dispatch(decrementOrder(id));
     };
 
     const handleClick = () => {

@@ -13,8 +13,8 @@ const CatalogMovie = () => {
                 <MovieList>
                     {movies.map(movie => (
                         <Movie 
-                            key={movie.id}
-                            id={movie.id}
+                            key={movie._id}
+                            id={movie._id}
                             title={movie.title}
                             duration={movie.duration}
                             imdbReviews={movie.imdbReviews} 

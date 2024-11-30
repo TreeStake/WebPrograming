@@ -7,7 +7,7 @@ import * as yup from 'yup';
 import { ErorrText, FormContainer, Input, SubmitBox } from "./submitForm.styled";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { clearOrders } from "../../redux/orderSlice";
+import { clearCart } from "../../redux/orderSlice";
 
 const FormError = ({name}) => {
     return(
@@ -19,17 +19,22 @@ const FormError = ({name}) => {
 const schema = yup.object().shape({
     firstName: yup
         .string()
+        .max(20, 'First name must be less than 20 characters')
+        .matches(/^[a-zA-Z, а-яА-ЯЄєїЇІіґҐ]+$/, 'First name can only contain letters')
         .required('First name is required'),
     lastName: yup
         .string()
+        .max(20, 'First name must be less than 20 characters')
+        .matches(/^[a-zA-Z, а-яА-ЯЄєїЇІіґҐ]+$/, 'First name can only contain letters')
         .required('Last name is required'),
     email: yup
         .string()
         .email('Invalid email address')
+        .matches(/^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/, 'Email must contain a dot')
         .required('Email is required'),
     phone: yup
         .string()
-        .matches(/^\d{9,15}$/, 'Phone number must be between 9 and 15 digits')
+        .matches(/^0\d{9}$/, 'Phone number must start with 0 and contain exactly 9 digits')
         .required('Phone number is required'),
     address: yup
         .string()
@@ -45,10 +50,15 @@ const SubmitForm = () => {
         navigate('/cart')
     }
 
-    const onSubmitClick = () => {
-        navigate('/success')
-        dispatch(clearOrders())
-    }
+    const onSubmitClick = async() => {
+        try {
+            await dispatch(clearCart()).unwrap();
+            navigate('/success');
+        } catch (error) {
+            console.error("Failed to clear cart:", error);
+            alert("Failed to submit your order. Please try again.");
+        }
+    };
 
     return(
         <>
@@ -63,7 +73,7 @@ const SubmitForm = () => {
                 address: ''}}
             validationSchema={schema}
             onSubmit={(values, { resetForm }) => {
-                console.log(values); // Виконуєте необхідну дію з даними форми
+                console.log(values);
                 resetForm();
                 onSubmitClick()}}>
                 <FormContainer>

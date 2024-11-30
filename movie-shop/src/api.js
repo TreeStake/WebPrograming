@@ -2,6 +2,34 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:5000/movies';
 
+export const clearAuthToken = () => {
+  localStorage.removeItem('token');
+};
+
+export const isAuthenticated = () => {
+  return !!localStorage.getItem('token');
+};
+
+export const registerUser = async (userData) => {
+  try {
+    const response = await axios.post(`http://localhost:5000/register`, userData);
+    return response.data;
+  } catch (error) {
+    console.error('Помилка при реєстрації користувача:', error);
+    throw error;
+  }
+};
+
+export const loginUser = async (loginData) => {
+  try {
+    const response = await axios.post(`http://localhost:5000/login`, loginData);
+    return response.data;
+  } catch (error) {
+    console.error('Помилка при логіні користувача:', error);
+    throw error;
+  }
+};
+
 export const getAllMovies = async () => {
   try {
     const response = await axios.get(API_URL);

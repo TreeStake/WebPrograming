@@ -8,6 +8,8 @@ import MovieDetails from "../../components/MovieDeteils/movieDeteils";
 import Cart from "../../pages/cart";
 import Submit from "../../pages/submit";
 import Success from "../../pages/success";
+import Login from "../../pages/login";
+import Register from "../../pages/register";
 
 const App = () => {
     return(
@@ -37,7 +39,15 @@ const App = () => {
                     <MoviesProvider>
                         <Success/>
                     </MoviesProvider>} />
-                </Route>
+                <Route path="login" element={
+                    <MoviesProvider>
+                        <Login/>
+                    </MoviesProvider>} />
+                <Route path="register" element={
+                    <MoviesProvider>
+                        <Register/>
+                    </MoviesProvider>} />
+            </Route>
                 
         </Routes>
     )

@@ -4,7 +4,7 @@ import { useMovies } from '../../moviesContex';
 import { DeteilDiv, FilmInfo, FilmTitle, InfoText, SelectTime, TicketAmount } from './movieDeteils.styled';
 import { Option, SearchButton } from '../../containers/Search/search.styled';
 import { useDispatch } from 'react-redux';
-import { addOrder } from '../../redux/orderSlice';
+import { addToCart } from '../../redux/orderSlice';
 
 const MovieDetails = () => {
     const { movieId } = useParams();
@@ -22,20 +22,24 @@ const MovieDetails = () => {
         return <div>Movie not found</div>;
     }
 
-    const handleAddToCart = () => {
+    const handleAddToCart = async() => {
         if (amount > 5){
             alert("You can`t add this order")
             return
         }
-        dispatch(addOrder({
-            movieId: selectedMovie.id,
-            title: selectedMovie.title,
-            price: selectedMovie.price,
-            amount: Number(amount),
-            time,
-            maxAmount: 5,
-        }))
-    };
+        try {
+            await dispatch(addToCart({
+                movieId: selectedMovie._id,
+                title: selectedMovie.title,
+                price: selectedMovie.price,
+                amount: Number(amount),
+                time,
+                maxAmount: 5,
+            }));
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     return (
         <DeteilDiv>
